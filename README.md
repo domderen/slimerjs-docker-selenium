@@ -1,7 +1,7 @@
 slimerjs-docker-selenium
 ========================
 
-> This project attempts to run SlimerJS headless browser, as a selenium runner node.
+> This project attempts to run SlimerJS headless browser, as a selenium runner node inside Docker.
 
 ## Status
 
