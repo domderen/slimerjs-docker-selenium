@@ -1,11 +1,10 @@
 FROM ubuntu:12.04
 
 # Env
-ENV SLIMERJS_VERSION_F 0.10.0pre
+ENV SLIMERJS_VERSION_F 1.0.0-pre
 ENV CASPERJS_VERSION_T master
 ENV SLIMERJSLAUNCHER=/usr/bin/firefox
 
-ADD fix.data ./
 
 # Commands
 RUN \
@@ -17,7 +16,6 @@ wget -O /tmp/slimerjs-$SLIMERJS_VERSION_F.zip http://download.slimerjs.org/night
 unzip /tmp/slimerjs-$SLIMERJS_VERSION_F.zip -d /tmp && \
 rm -f /tmp/slimerjs-$SLIMERJS_VERSION_F.zip && \
 mv /tmp/slimerjs-$SLIMERJS_VERSION_F/ /srv/var/slimerjs && \
-cat /fix.data > /srv/var/slimerjs/vendors/ghostdriver/logger.js && \
 echo '#!/bin/bash\nxvfb-run /srv/var/slimerjs/slimerjs $*' > /srv/var/slimerjs/slimerjs.sh && \
 chmod 755 /srv/var/slimerjs/slimerjs.sh && \
 ln -s /srv/var/slimerjs/slimerjs.sh /usr/bin/slimerjs && \
